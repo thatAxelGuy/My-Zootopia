@@ -22,11 +22,8 @@ for animal in animals_data:
 
     if name:
         output += f'<div class="card__title">{name}</div>\n'
-        output += f"<div class=card__title>{name}</div>\n"
 
     output += "<p class=card__text>\n"
-
-    output += '<p class="card__text">\n'
 
     if characteristics.get("diet") is not None:
         output += f'<strong>Diet:</strong> {characteristics["diet"]}<br>\n'
