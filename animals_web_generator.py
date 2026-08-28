@@ -18,17 +18,19 @@ def serialize_animal(animal) -> str:
     if name:
         out_string += f'<div class="card__title">{name}</div>\n'
 
-    out_string += '<p class="card__text">\n'
+    out_string += '<div class="card__text">\n'
+    out_string += '<ul class="animal-details">'
 
     if characteristics.get("diet") is not None:
-        out_string += f'<strong>Diet:</strong> {characteristics["diet"]}<br>\n'
+        out_string += f'<li class="animal-detail"><strong>Diet:</strong> {characteristics["diet"]}</li>\n'
 
     if locations:
-        out_string += f'<strong>Location:</strong> {locations[0]}<br>\n'
+        out_string += f'<li class="animal-detail"><strong>Location:</strong> {locations[0]}</li>\n'
 
     if characteristics.get('type') is not None:
-        out_string += f'<strong>Type:</strong> {characteristics["type"]}<br>\n'
-    out_string += '</p>\n'
+        out_string += f'<li class="animal-detail"><strong>Type:</strong> {characteristics["type"]}</li>\n'
+    out_string += '</ul>'
+    out_string += '</div>'
     out_string += '</li>'
     return out_string
 
