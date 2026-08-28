@@ -37,6 +37,20 @@ def serialize_animal(animal) -> str:
 
 animals_data = load_data('animals_data.json')
 
+skin_types = set()
+
+for animal in animals_data:
+    skin_type = animal["characteristics"].get("skin_type")
+    if skin_type:
+        skin_types.add(skin_type)
+
+print("Available skin types:")
+for skin_type in skin_types:
+    print(skin_type)
+print("All")
+
+selected_skin_type = input("Enter a skin type: ").capitalize()
+
 # open animals_template html and store it in template
 with open("animals_template.html", 'r') as handle:
     template = handle.read()
@@ -44,7 +58,9 @@ with open("animals_template.html", 'r') as handle:
 # loop through json and store wanted data in output string
 output: str = ""
 for animal in animals_data:
-    output += serialize_animal(animal)
+    skin_type = animal["characteristics"].get("skin_type")
+    if skin_type == selected_skin_type or selected_skin_type == "All":
+        output += serialize_animal(animal)
 
 # replace string in template with output and store in final_html
 final_html = template.replace(
