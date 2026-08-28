@@ -21,19 +21,22 @@ for animal in animals_data:
     output += '<li class="cards__item">'
 
     if name:
+        output += f'<div class="card__title">{name}</div>\n'
         output += f"<div class=card__title>{name}</div>\n"
 
     output += "<p class=card__text>\n"
 
-    if characteristics.get('diet') is not None:
-        output += f"<strong>Diet:</strong>  {characteristics['diet']}<br/>\n"
+    output += '<p class="card__text">\n'
+
+    if characteristics.get("diet") is not None:
+        output += f'<strong>Diet:</strong> {characteristics["diet"]}<br>\n'
 
     if locations:
-        output += f"<strong>Location:</strong>  {locations[0]}</br>\n"
+        output += f'<strong>Location:</strong> {locations[0]}<br>\n'
 
     if characteristics.get('type') is not None:
-        output += f"<strong>Type:</strong>  {characteristics['type']}</br\n"
-    output += "</p>\n"
+        output += f'<strong>Type:</strong> {characteristics["type"]}<br>\n'
+    output += '</p>\n'
     output += '</li>'
 
 # replace string in template with output and store in final_html
