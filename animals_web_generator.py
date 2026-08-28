@@ -12,24 +12,26 @@ with open("animals_template.html", 'r') as handle:
     template = handle.read()
 
 # loop through json and store wanted data in output string
-output: str = ""
+output: str = "" # empty output string
 for animal in animals_data:
     name = animal.get('name')
     characteristics = animal['characteristics']
     locations = animal['locations']
 
+    output += '<li class="cards__item">'
+
     if name:
-        output += f"Name:  {name}\n"
+        output += f"Name:  {name}</br>\n"
 
     if characteristics.get('diet') is not None:
-        output += f"Diet:  {characteristics['diet']}\n"
+        output += f"Diet:  {characteristics['diet']}<br/>\n"
 
     if locations:
-        output += f"Location:  {locations[0]}\n"
+        output += f"Location:  {locations[0]}</br>\n"
 
     if characteristics.get('type') is not None:
-        output += f"Type:  {characteristics['type']}\n"
-    output += "\n"
+        output += f"Type:  {characteristics['type']}</br\n"
+    output += '</li>'
 
 # replace string in template with output and store in final_html
 final_html = template.replace(
